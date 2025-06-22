@@ -1,12 +1,22 @@
-<mat-icon class="material-symbols-outlined" (click)="returnToTheFuture()"
-  >arrow_back</mat-icon
->
+<header class="p-4">
+  <mat-icon class="material-symbols-outlined" (click)="returnToTheFuture()"
+    >arrow_back</mat-icon
+  >
+</header>
 
-@if ( pokemonDetail$ | async; as pokemon) {
-<img src="{{ pokemon.sprites.front_default }}" />
-<!--Si c'est un tableau faire un index et choisir celui dont ona. besoin pour ensuite sortir la donnée-->
-<p>{{ pokemon.forms[0].name }}</p>
-@for (stat of pokemon.stats; track $index) {
-<p>{{ stat.stat.name }}</p>
-<p>{{ stat.base_stat }}</p>
-} }
+<section class="flex flex-col items-center text-center gap-5 lg:gap-10">
+  @if ( pokemonDetail$ | async; as pokemon) {
+  <h1 class="text-5xl trade-winds-regular m-4 p-2 drop-shadow-[0_1px_2px_rgba(0,0,0,0.75)] md:text-7xl lg:text-8xl">{{ pokemon.forms[0].name }}</h1>
+  <img
+    src="{{ pokemon.sprites.front_default }}"
+    alt="image du pokemon"
+    class="object-cover p-2 border m-4 rounded-[8px] bg-amber-50 scale-125 w-40 drop-shadow-[0_1px_2px_rgba(0,0,0,0.75)] md:w-60 md:m-6 lg:w-80 lg:m-8"
+  />
+  <!--Si c'est un tableau faire un index et choisir celui dont ona. besoin pour ensuite sortir la donnée-->
+  @for (stat of pokemon.stats; track $index) {
+  <section class="flex silkscreen-regular drop-shadow-[0_1px_1px_rgba(0,0,0,0.75)] gap-2 md:text-2xl lg:text-3xl lg:gap-4">
+    <p>{{ stat.stat.name }} :</p>
+    <p>{{ stat.base_stat }}</p>
+  </section>
+  } }
+</section>

@@ -4,10 +4,11 @@ import { RouterLink } from '@angular/router';
 import { take } from 'rxjs';
 import { PokemonList } from '../../../Utils/interface';
 import { PokemonService } from '../../services/pokemon.service';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-home',
-  imports: [CommonModule, RouterLink],
+  imports: [CommonModule, RouterLink, MatIconModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
 })
