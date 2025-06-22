@@ -1,0 +1,12 @@
+<mat-icon class="material-symbols-outlined" (click)="returnToTheFuture()"
+  >arrow_back</mat-icon
+>
+
+@if ( pokemonDetail$ | async; as pokemon) {
+<img src="{{ pokemon.sprites.front_default }}" />
+<!--Si c'est un tableau faire un index et choisir celui dont ona. besoin pour ensuite sortir la donnée-->
+<p>{{ pokemon.forms[0].name }}</p>
+@for (stat of pokemon.stats; track $index) {
+<p>{{ stat.stat.name }}</p>
+<p>{{ stat.base_stat }}</p>
+} }

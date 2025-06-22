@@ -1,0 +1,39 @@
+<h1 class="text-5xl text-center">Pokedex</h1>
+
+<!-- Recherche par nom -->
+<label for="" class="flex justify-center text-center p-2 m-4">
+  <!-- blur = Plus focus sur l'input (seletionner) -->
+  <!-- $event = -->
+  <input
+    (blur)="updateData($event)"
+    type="text"
+    placeholder="Type name"
+    class="border p-2"
+  />
+  <button type="button" class="border p-2" (click)="searchByName()">
+    Search
+  </button>
+  <!-- Ternaire pour afficher le changement du A-Z -->
+  <!-- <button type="button" (click)="changeFilter()">{{this.isFilter ? 'A-Z':'Z-A' }}</button> -->
+  <label for="filter">{{ this.isFilter ? "A-Z" : "Z-A" }}</label>
+  <input type="radio" [id]="'filter'" (click)="changeFilter()" />
+</label>
+
+<!-- Affichage de la liste de 50 -->
+
+<ul class="text-center flex flex-col justify-center gap-4 mt-4">
+  @for (pokemon of listSearch; track $index) {
+  <li class="text-2xl flex flex-col border p-2 m-4">
+    <a [routerLink]="['detail', getPokemonId(pokemon.url)]">{{
+      pokemon.name
+    }}</a>
+  </li>
+  }
+  <!-- @for (pokemon of (pokemon$ | async)?.results; track $index) {
+  <li class="text-2xl flex flex-col border p-2 m-4">
+    <a [routerLink]="['detail', getPokemonId(pokemon.url)]">{{
+      pokemon.name
+    }}</a>
+  </li>
+  } -->
+</ul>
