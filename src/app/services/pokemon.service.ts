@@ -25,6 +25,7 @@ export class PokemonService {
   getPokemonIdFromUrl(url: string) {
     return url.replace(this.#apiPokemonDetail, "").replace("/", "");
 
+    //Ancienne version
     // const parts = url.split('/');
     // const filteredParts = parts.filter((part) => part !== '');
     // if (filteredParts.length > 0) {
@@ -38,6 +39,7 @@ export class PokemonService {
     return this.http.get<PokemonDetail>(this.#apiPokemonDetail + id);
   }
 
+  //Recherche par nom
   getPokemonByName(name: string) {
     const url = `${this.#apiPokemonDetail}${name}`;
     return this.http.get<PokemonDetail>(url);

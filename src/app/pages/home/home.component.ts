@@ -22,6 +22,7 @@ export class HomeComponent {
   //Injection du service dans le composant
   #pokemonService = inject(PokemonService);
   //Initialisation de ma liste
+  //$ est une convention pour préciser que c'est un observable
   pokemon$ = this.#pokemonService
     .getPokemon()
     .pipe(take(1))
